@@ -71,6 +71,17 @@ header {
     }
 }
 
+.card-image-sm {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    display: none;
+
+    @if $debug {
+        border: 1px solid black;
+    }
+}
+
 .card-summary {
     flex: 2;
     display: flex;
@@ -103,5 +114,9 @@ footer {
 
     .card-image-container {
         display: none;
+    }
+
+    .card-image-sm {
+        display: block;
     }
 }
