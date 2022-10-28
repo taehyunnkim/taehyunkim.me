@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { CardComponent } from './components/card/card.component';
+import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CardComponent } from './components/card/card.component';
     HeaderComponent,
     ImageCardComponent,
     CardComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,

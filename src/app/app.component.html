@@ -8,15 +8,15 @@
       <section>
         <h1>Hi, I'm Eric!</h1>
         <p>
-          I'm an aspiring Full-stack Developer studying Informatics at the <span>University of Washington</span>.
+          I'm a undergraduate student pursing Informatics at the <br><span>University of Washington</span>.
         </p>
         <br>
         <p>
-          Having personally experienced cyber threats, I knew I wanted to develop practical solutions to modern security challenges.
+          Currently, I'm passionate about developing practical solutions to modern security challenges.
         </p>
         <br>
         <p>
-          Check out my development projects or learn more about me!
+          With my personal and professional experience in Cybersecurity and Full-stack development, I aspire to empower individuals and organizations in today's evolving threat landscape!  
         </p>
       </section>
       <section id="introduction-picture">
@@ -24,12 +24,36 @@
       </section>
     </article>
     <article id="recent-projects">
-      <h2>Recent Projects</h2>
+      <h2>Ongoing Projects</h2>
       <section id="card-grid">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <app-card 
+          title="securitytag"
+          imgSrc="/assets/projects/securitytag.png" 
+          description="A browser extension that gives security recommendations."
+          startDate="October 2022"
+          link="https://github.com/taehyunnkim/securitytag"
+          [tags]="['Typescript', 'React', 'Front-end']">
+        </app-card>
+        <app-card 
+          title="gomt"
+          imgSrc="/assets/projects/gomt.png" 
+          startDate="May 2022"
+          description="A console utility for MikroTik devices."
+          link="https://github.com/taehyunnkim/gomt"
+          [tags]="['Go', 'TUI']">
+        </app-card>
+        <app-card 
+          title="Vocaby"
+          imgSrc="/assets/projects/vocaby.png"
+          description="An Android application for building vocabulary."
+          startDate="July 2021"
+          link="https://vocaby.app"
+          [tags]="['Kotlin', 'Java', 'Python', 'Full-stack']">
+        </app-card>
       </section>
+      <footer>
+        <p>This website is in development</p>
+      </footer>
     </article>
   </div>
   <div id="app-right-col"></div>

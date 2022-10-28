@@ -1,15 +1,107 @@
 @import "../../../styles/sizes.scss";
 @import "../../../styles/vars.scss";
 
-div {
+$debug: false;
+$spacing: 0;
+
+p {
+    font-family: neue-haas-unica, sans-serif;
+    color: rgb(138, 138, 138);
+    font-size: 0.8em;
+    hyphens: auto;
+}
+
+.card {
     flex: 1 1;
     padding: $card-padding;
     border-radius: $radius;
     background-color: white;
-    height: 160px;
+    height: 180px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(220, 220, 220);
+    user-select: none;
 
     &:hover {
         border: 1px solid $black;
+    }
+}
+
+header {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing;
+
+    p {
+        width: 100%;
+        text-align: end;
+    }
+
+    @if $debug {
+        border: 1px solid black;
+    }
+}
+
+.card-content {
+    flex: 4;
+    display: flex;
+    margin-top: -12px;
+}
+
+.card-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @if $debug {
+        border: 1px solid blue;
+    }
+}
+
+.card-image {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+
+    @if $debug {
+        border: 1px solid black;
+    }
+}
+
+.card-summary {
+    flex: 2;
+    display: flex;
+    padding-left: 18px;
+    justify-content: center;
+    flex-direction: column;
+
+    @if $debug {
+        border: 1px solid red;
+    }
+}
+
+footer {
+    flex: 1;
+    margin-top: $spacing;
+
+    @if $debug {
+        border: 1px solid black;
+    }
+}
+
+@include sm-mobile {
+    .card {
+        height: 170px;
+    }
+
+    .card-content {
+        margin-top: 0;
+    }
+
+    .card-image-container {
+        display: none;
     }
 }

@@ -10,6 +10,7 @@ HTML, body {
     border: 0px;
     position: relative;
     font-size: 100%;
+    height: 100%;
 }
 
 h1 {
@@ -81,4 +82,16 @@ section {
     @if $debug {
         border: 1px solid orchid;
     }
+}
+
+header {
+    @if $debug {
+        border: 1px solid blue;
+    } 
+}
+
+footer {
+    @if $debug {
+        border: 1px solid blue;
+    } 
 }
