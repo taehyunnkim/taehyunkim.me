@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'vars';
+$debug: false;
 
 HTML, body {
     margin: 0px;
@@ -12,10 +13,36 @@ HTML, body {
 h1 {
     color: $black;
     font-family: 'Playfair Display', sans-serif;
+
+    @if $debug {
+        border: 1px solid purple;
+    }
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    @if $debug {
+        border: 1px solid purple;
+    }
+}
+
+li {
+    @if $debug {
+        border: 1px solid blue;
+    }
+}
+
+img {
+    @if $debug {
+        border: 1px solid black;
+    }
+}
+
+div {
+    @if $debug {
+        border: 1px solid red;
+    }
 }

@@ -1,6 +1,6 @@
 @import '../../styles/sizes.scss';
 @import '../../styles/vars.scss';
-$local-debug: false;
+$debug: false;
 
 header {
     width: 100%;
@@ -11,7 +11,7 @@ header {
     justify-content: space-between;
     padding: $box-padding;
 
-    @if $debug or $local-debug {
+    @if $debug {
         border: 1px solid purple;
     }
 }
@@ -35,11 +35,19 @@ li {
     &:last-child {
         padding-right: 0px;
     }
+
+    @if $debug {
+        border: 1px solid blue;
+    }
 }
 
 a {
     text-decoration: none;
     color: $black;
+}
+
+ul {
+    display: flex;
 }
 
 .navItem {
@@ -127,8 +135,12 @@ a {
         font-size: 1.4em;
     }
 
-    ul {
-        height: 28px;
+    .navItem {
+        &:hover .hover,
+        &:hover .base {
+            cursor: pointer;
+            transform: translate(0, 138%);
+        }
     }
 
     li {

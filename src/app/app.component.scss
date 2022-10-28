@@ -1,7 +1,7 @@
 @import '../styles/sizes.scss';
 @import '../styles/vars.scss';
 
-$local-debug: false;
+$debug: false;
 $background-color: #F1F1F1;
 
 #app-left-col {
@@ -16,7 +16,7 @@ $background-color: #F1F1F1;
         right: 0;
     }
 
-    @if $debug or $local-debug {
+    @if $debug {
         border-left: 1px solid blue;
         border-right: 1px solid blue;
     }
@@ -35,7 +35,7 @@ $background-color: #F1F1F1;
     background-color: $background-color;
     flex: 2;
 
-    @if $debug or $local-debug {
+    @if $debug {
         border-left: 1px solid red;
         border-right: 1px solid red;
     }
