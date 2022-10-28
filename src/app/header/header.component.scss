@@ -27,13 +27,45 @@ h1 {
 
 li {
     display: inline-block;
-    font-family: 'Playfair Display', serif;
+    font-family: neue-haas-unica, sans-serif;
     padding: 6px;
     font-size: 1.1em;
+    font-weight: 200;
 
     &:last-child {
         padding-right: 0px;
     }
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+}
+
+.navItem {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+
+    &:hover .hover,
+    &:hover .base {
+        cursor: pointer;
+        transform: translate(0, 133%);
+    }
+}
+
+.base {
+    text-align: center;
+    display: block;
+    transition: all .5s cubic-bezier(.23, 1, .32, 1);
+}
+
+.hover {
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+    top: -65%;
+    transition: all .5s cubic-bezier(.23, 1, .32, 1);
 }
 
 .hamburger {
@@ -92,12 +124,15 @@ li {
     }
 
     h1 {
-        font-size: 1.2em;
+        font-size: 1.4em;
+    }
+
+    ul {
+        height: 28px;
     }
 
     li {
-        font-size: 0.9em;
-        font-weight: 600;
+        font-size: 1em;
     }
 }
 
