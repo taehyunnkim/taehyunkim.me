@@ -10,11 +10,11 @@ h1 {
 }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 footer {
@@ -74,6 +74,7 @@ footer {
 #introduction {
     display: flex;
     margin-top: $header-magin-top;
+    padding: 0 42px;
 
     & > section:first-child {
         flex: 4;
@@ -193,13 +194,18 @@ footer {
     }
 
     p {
-        font-size: 1.1em;
+        font-size: 1em;
     }
 
     #card-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1em;
+    }
+
+    #introduction {
+        padding: 0 12px;
+        margin-top: 24px;
     }
 }
 
@@ -223,6 +229,7 @@ footer {
     }
 
     #introduction {
+        padding: 0;
         margin-top: 24px;
     }
 
@@ -260,6 +267,7 @@ footer {
     }
 
     #introduction {
+        padding: 0;
         margin-top: 32px;
     }
 
