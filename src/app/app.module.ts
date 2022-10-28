@@ -11,6 +11,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { RouterModule } from '@angular/router';
 import { IntroductionComponent } from './components/introduction/introduction.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
     TagComponent,
     IntroductionComponent,
     ProjectListComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,26 @@
 import { Component, Renderer2 } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
+import { NavigationService } from './services/NavigationService';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  providers:[NavigationService],
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   curtainOpen: boolean = false;
   curtains: NodeListOf<HTMLElement> | null = null;
   overlay: HTMLElement | null = null;
+  subscription: Subscription | null = null;
   
-  constructor(private renderer: Renderer2, private router: Router) {
+  constructor(
+    private renderer: Renderer2, 
+    private router: Router,
+    private navigationService: NavigationService,
+  ) {
     this.router.events.subscribe((routerData) => {
-      console.log(routerData)
       if(routerData instanceof ResolveEnd){ 
         if(routerData.url === '/projects'){
           this.openCurtain()
@@ -37,7 +44,16 @@ export class AppComponent {
         this.renderer.setStyle(curtain, 'width', '0%');
       });
     }
+
+    this.subscription = this.navigationService.navigateHome$
+      .subscribe( _ => {
+        this.router.navigate(["home"]);
+      });
   }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
+  }  
 
   displayOverlay(): void {
     if (this.overlay != null) {
