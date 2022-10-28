@@ -22,7 +22,6 @@ header {
 
 li {
     display: inline-block;
-    font-family: neue-haas-unica, sans-serif;
     padding: 6px;
     font-size: 1.1em;
     font-weight: 200;
@@ -60,7 +59,7 @@ ul {
 .base {
     text-align: center;
     display: block;
-    transition: all .5s cubic-bezier(.23, 1, .32, 1);
+    transition: $transition;
 }
 
 .hover {
@@ -68,10 +67,10 @@ ul {
     position: absolute;
     text-align: center;
     top: -65%;
-    transition: all .5s cubic-bezier(.23, 1, .32, 1);
+    transition: $transition;
 }
 
-.hamburger {
+.mobile-nav {
     display: none;
 }
 
@@ -164,11 +163,20 @@ ul {
         display: none;
     }
 
-    nav {
+    .main-nav {
         display: none;
     }
 
-    .hamburger {
+    .mobile-nav {
         display: block;
+        color: $black;
+    }
+
+    .base {
+        font-weight: 400;
+    }
+
+    .hover {
+        font-weight: 900;
     }
 }

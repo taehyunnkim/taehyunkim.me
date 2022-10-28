@@ -1,9 +1,17 @@
 <div class="appContainer">
+  <div id="overlay" class="overlay">
+    <a class="closebtn" (click)="hideOverlay()">&times;</a>
+    <div class="overlay-content">
+      <a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a>
+      <a href="https://github.com/taehyunnkim" target="_blank">Github</a>
+      <a href="/assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a>
+    </div>
+  </div>
   <div id="app-left-col">
     <img id="background-logo" src="/assets/images/logo_gray.png" />
   </div>
   <div id="app-middle">
-    <app-header></app-header>
+    <app-header (open)="displayOverlay()"></app-header>
     <article id="introduction">
       <section>
         <h1>Hi, I'm Eric!</h1>

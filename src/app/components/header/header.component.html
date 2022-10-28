@@ -4,7 +4,7 @@
         <h1>Eric Kim.</h1>
     </div>
 
-    <nav>
+    <nav class="main-nav">
         <ul>
             <li class="navItem">
                 <span class="base">Linkedin</span>
@@ -16,9 +16,11 @@
             </li>
             <li class="navItem">
                 <span class="base">Resume</span>
-                <span class="hover"><a href="assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a></span>
+                <span class="hover"><a href="/assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a></span>
             </li>
         </ul>
     </nav>
-    <i class="hamburger fa fa-bars"></i>
+    <nav class="mobile-nav">
+        <i class="fa-regular fa-bars fa-lg" (click)="openOverlay()"></i>
+    </nav>
 </header>
