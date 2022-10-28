@@ -6,4 +6,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Deploy
 
-Run `ng deploy --base-href=/taehyunkim.me/ --cname=taehyunkim.me` to deploy the app using gh-pages.
+Run `ng deploy --base-href=/ --cname=taehyunkim.me` to deploy the app using gh-pages.
