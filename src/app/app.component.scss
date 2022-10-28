@@ -4,6 +4,20 @@
 $debug: false;
 $background-color: #F1F1F1;
 
+
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+p {
+    font-size: 1.2em;
+    font-weight: 200;
+}
+
 #app-left-col {
     position: relative;
     background-color: $background-color;
@@ -26,7 +40,7 @@ $background-color: #F1F1F1;
     padding-left: $box-padding;
     padding-right: $box-padding;
     background-color: $background-color;
-
+    box-sizing: border-box;
     border-left: 1px solid rgb(220, 220, 220);
     border-right: 1px solid rgb(220, 220, 220);
 }
@@ -39,6 +53,42 @@ $background-color: #F1F1F1;
         border-left: 1px solid red;
         border-right: 1px solid red;
     }
+}
+
+#introduction {
+    display: flex;
+    margin-top: $header-magin-top;
+
+    & > section:first-child {
+        flex: 4;
+
+        p > span {
+            font-weight: 600;
+            color: #4b2e83;
+        }
+    }
+}
+
+#introduction-picture {
+    flex: 3;
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+}
+
+#recent-projects {
+    margin-top: 32px;
+    margin-bottom: $header-magin-top;
+
+    h2 {
+        margin-bottom: 24px;
+    }
+}
+
+#card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
 }
 
 .appContainer {
@@ -78,6 +128,10 @@ $background-color: #F1F1F1;
             width: $header-height;
         }
     }
+
+    p {
+        font-size: 1.1em;
+    }
 }
 
 @include tablet-mobile {
@@ -89,23 +143,71 @@ $background-color: #F1F1F1;
 @include mobile {
     #app-middle {
         width: $mobile-width;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     #app-left-col {
         #background-logo {
             display: none;
         }
+    }
+    
+    #introduction {
+        margin-top: 24px;
+    }
+
+    #introduction-picture {
+        display: none;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    #card-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1em;
     }
 }
 
 @include sm-mobile {
     #app-middle {
         width: $sm-mobile-width;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     #app-left-col {
         #background-logo {
             display: none;
         }
+    }
+
+    #introduction {
+        margin-top: 24px;
+    }
+
+    #introduction-picture {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    #card-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1em;
     }
 }

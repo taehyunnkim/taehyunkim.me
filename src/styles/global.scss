@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'vars';
+@import 'sizes';
+
 $debug: false;
 
 HTML, body {
@@ -12,7 +14,29 @@ HTML, body {
 
 h1 {
     color: $black;
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Stardos Stencil', sans-serif;
+    margin: 0;
+
+    @if $debug {
+        border: 1px solid purple;
+    }
+}
+
+h2 {
+    color: $black;
+    font-family: neue-haas-unica, sans-serif;
+    margin: 0;
+
+    @if $debug {
+        border: 1px solid purple;
+    }
+}
+
+p {
+    color: $black;
+    margin: 0;
+    font-family: neue-haas-unica, sans-serif;
+    line-height: 150%;
 
     @if $debug {
         border: 1px solid purple;
@@ -44,5 +68,17 @@ img {
 div {
     @if $debug {
         border: 1px solid red;
+    }
+}
+
+article {
+    @if $debug {
+        border: 1px solid orange;
+    }
+}
+
+section {
+    @if $debug {
+        border: 1px solid orchid;
     }
 }

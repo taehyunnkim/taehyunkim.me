@@ -1,0 +1,14 @@
+@import '../../../styles/sizes';
+@import '../../../styles/vars';
+
+div {
+    background-color: white;
+    border-radius: $radius;
+    padding: $card-padding;
+    box-shadow: $box-shadow;
+}
+
+img {
+    height: 100%;
+    border-radius: $radius;
+}

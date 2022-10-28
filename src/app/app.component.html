@@ -1,9 +1,36 @@
 <div class="appContainer">
   <div id="app-left-col">
-    <img id="background-logo" src="/assets/logo_gray.png" />
+    <img id="background-logo" src="/assets/images/logo_gray.png" />
   </div>
   <div id="app-middle">
     <app-header></app-header>
+    <article id="introduction">
+      <section>
+        <h1>Hi, I'm Eric!</h1>
+        <p>
+          I'm an aspiring Full-stack Developer studying Informatics at the <span>University of Washington</span>.
+        </p>
+        <br>
+        <p>
+          Having personally experienced cyber threats, I knew I wanted to develop practical solutions to modern security challenges.
+        </p>
+        <br>
+        <p>
+          Check out my development projects or learn more about me!
+        </p>
+      </section>
+      <section id="introduction-picture">
+        <app-image-card imgSrc="/assets/images/me.jpg" [sizeBig]=400 [sizeMedium]=300 ></app-image-card>
+      </section>
+    </article>
+    <article id="recent-projects">
+      <h2>Recent Projects</h2>
+      <section id="card-grid">
+        <app-card></app-card>
+        <app-card></app-card>
+        <app-card></app-card>
+      </section>
+    </article>
   </div>
   <div id="app-right-col"></div>
 </div>

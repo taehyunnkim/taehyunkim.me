@@ -1,5 +1,5 @@
-@import '../../styles/sizes.scss';
-@import '../../styles/vars.scss';
+@import '../../../styles/sizes.scss';
+@import '../../../styles/vars.scss';
 $debug: false;
 
 header {
@@ -9,7 +9,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $box-padding;
 
     @if $debug {
         border: 1px solid purple;
@@ -19,10 +18,6 @@ header {
 .branding {
     display: flex;
     align-items: center;;
-}
-
-h1 {
-    padding: $box-padding;
 }
 
 li {
@@ -99,6 +94,10 @@ ul {
         height: 64px;
         display: inline-block;
     }
+
+    h1 {
+        padding: $text-padding;
+    }
 }
 
 @include tablet {
@@ -120,6 +119,10 @@ ul {
         height: 64px;
         display: inline-block;
     }
+
+    h1 {
+        padding: $text-padding;
+    }
 }
 
 @include mobile {
@@ -128,11 +131,11 @@ ul {
     }
 
     .header-logo {
-        height: 48px;
+        height: 64px;
     }
 
     h1 {
-        font-size: 1.4em;
+        display: none;
     }
 
     .navItem {
@@ -154,11 +157,11 @@ ul {
     }
 
     .header-logo {
-        height: 48px;
+        height: 64px;
     }
 
     h1 {
-        font-size: 1em;
+        display: none;
     }
 
     nav {
