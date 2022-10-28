@@ -1,0 +1,111 @@
+@import '../styles/sizes.scss';
+@import '../styles/vars.scss';
+
+$local-debug: false;
+$background-color: #F1F1F1;
+
+#app-left-col {
+    position: relative;
+    background-color: $background-color;
+    flex: 2;
+
+    #background-logo {
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+    @if $debug or $local-debug {
+        border-left: 1px solid blue;
+        border-right: 1px solid blue;
+    }
+}
+
+#app-middle {
+    padding-left: $box-padding;
+    padding-right: $box-padding;
+    background-color: $background-color;
+
+    border-left: 1px solid rgb(220, 220, 220);
+    border-right: 1px solid rgb(220, 220, 220);
+}
+
+#app-right-col {
+    background-color: $background-color;
+    flex: 2;
+
+    @if $debug or $local-debug {
+        border-left: 1px solid red;
+        border-right: 1px solid red;
+    }
+}
+
+.appContainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@include desktop {
+    #app-middle {
+        width: $desktop-width;
+    }
+
+    #app-left-col {
+        #background-logo {
+            margin-top: $header-magin-top;;
+            width: $header-height;
+        }
+    }
+}
+
+@include desktop-tablet {
+    #background-logo {
+        display: none;
+    }
+}
+
+@include tablet {
+    #app-middle {
+        width: $tablet-width;
+    }
+
+    #app-left-col {
+        #background-logo {
+            margin-top: $header-magin-top;;
+            width: $header-height;
+        }
+    }
+}
+
+@include tablet-mobile {
+    #background-logo {
+        display: none;
+    }
+}
+
+@include mobile {
+    #app-middle {
+        width: $mobile-width;
+    }
+
+    #app-left-col {
+        #background-logo {
+            display: none;
+        }
+    }
+}
+
+@include sm-mobile {
+    #app-middle {
+        width: $sm-mobile-width;
+    }
+
+    #app-left-col {
+        #background-logo {
+            display: none;
+        }
+    }
+}

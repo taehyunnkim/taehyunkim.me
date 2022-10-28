@@ -1,0 +1,124 @@
+@import '../../styles/sizes.scss';
+@import '../../styles/vars.scss';
+$local-debug: false;
+
+header {
+    width: 100%;
+    margin-top: $header-magin-top;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $box-padding;
+
+    @if $debug or $local-debug {
+        border: 1px solid purple;
+    }
+}
+
+.branding {
+    display: flex;
+    align-items: center;;
+}
+
+h1 {
+    padding: $box-padding;
+}
+
+li {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    padding: 6px;
+    font-size: 1.1em;
+
+    &:last-child {
+        padding-right: 0px;
+    }
+}
+
+.hamburger {
+    display: none;
+}
+
+@include desktop {
+    header {
+        height: $header-height;
+    }
+
+    .header-logo {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+}
+
+@include desktop-tablet {
+    .header-logo {
+        height: 64px;
+        display: inline-block;
+    }
+}
+
+@include tablet {
+    header {
+        height: $header-height;
+    }
+
+    .header-logo {
+        display: none;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+}
+
+@include tablet-mobile {
+    .header-logo {
+        height: 64px;
+        display: inline-block;
+    }
+}
+
+@include mobile {
+    header {
+        height: $header-height - 20px;
+    }
+
+    .header-logo {
+        height: 48px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    li {
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+}
+
+@include sm-mobile {
+    header {
+        height: $header-height - 30px;
+    }
+
+    .header-logo {
+        height: 48px;
+    }
+
+    h1 {
+        font-size: 1em;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
