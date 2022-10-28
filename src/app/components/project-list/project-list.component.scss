@@ -1,0 +1,36 @@
+@import '../../../styles/sizes.scss';
+@import '../../../styles/vars.scss';
+
+$debug: false;
+
+:host {
+    flex: 1;
+}
+
+div {
+    height: 70%;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+@include mobile {
+    h1 {
+        font-size: 1.4em;
+    }
+}
+
+@include sm-mobile {
+    h1 {
+        font-size: 1.4em;
+    }
+}

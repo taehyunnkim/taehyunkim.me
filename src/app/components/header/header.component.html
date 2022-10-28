@@ -1,11 +1,15 @@
 <header>
-    <div class="branding">
+    <div class="branding" (click)="hideCurtain()">
         <img class="header-logo" src="assets/images/logo_gray_dark.png" />
         <h1>Eric Kim.</h1>
     </div>
 
     <nav class="main-nav">
         <ul>
+            <li class="navItem" (click)="displayCurtain()">
+                <span class="base">Projects</span>
+                <span class="hover">Projects</span>
+            </li>
             <li class="navItem">
                 <span class="base">Linkedin</span>
                 <span class="hover"><a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a></span>
@@ -21,6 +25,6 @@
         </ul>
     </nav>
     <nav class="mobile-nav">
-        <i class="fa-regular fa-bars fa-lg" (click)="openOverlay()"></i>
+        <i class="fa-regular fa-bars fa-lg" (click)="displayOverlay()"></i>
     </nav>
 </header>

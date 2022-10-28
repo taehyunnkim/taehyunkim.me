@@ -3,12 +3,14 @@
 $debug: false;
 
 header {
+    position: relative;
     width: 100%;
     margin-top: $header-magin-top;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 3;
 
     @if $debug {
         border: 1px solid purple;
@@ -17,7 +19,8 @@ header {
 
 .branding {
     display: flex;
-    align-items: center;;
+    align-items: center;
+    cursor: pointer;
 }
 
 li {
@@ -168,8 +171,10 @@ ul {
     }
 
     .mobile-nav {
+        position: relative;
         display: block;
         color: $black;
+        z-index: 3;
     }
 
     .base {

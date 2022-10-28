@@ -8,6 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { CardComponent } from './components/card/card.component';
 import { TagComponent } from './components/tag/tag.component';
+import { RouterModule } from '@angular/router';
+import { IntroductionComponent } from './components/introduction/introduction.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,19 @@ import { TagComponent } from './components/tag/tag.component';
     ImageCardComponent,
     CardComponent,
     TagComponent,
+    IntroductionComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
+    RouterModule.forRoot([
+      {path: 'home', component: IntroductionComponent},
+      {path: 'projects', component: ProjectListComponent},
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
+      {path: '**', component: ProjectListComponent},
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
