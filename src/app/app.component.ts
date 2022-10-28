@@ -13,9 +13,12 @@ export class AppComponent {
   
   constructor(private renderer: Renderer2, private router: Router) {
     this.router.events.subscribe((routerData) => {
+      console.log(routerData)
       if(routerData instanceof ResolveEnd){ 
         if(routerData.url === '/projects'){
           this.openCurtain()
+        } else {
+          this.closeCurtain()
         }
       } 
     })
