@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { IntroductionComponent } from './components/introduction/introduction.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ButtonComponent } from './components/button/button.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,13 @@ import { ButtonComponent } from './components/button/button.component';
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', component: ProjectListComponent},
     ]),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faBars);
+  }
+}
