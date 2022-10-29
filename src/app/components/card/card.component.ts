@@ -25,7 +25,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.breakpointObserver.isMatched("(max-width: 480px)")) {
-      this.tags = this.tags.slice(0, 3)
+      this.tags = this.tags.slice(0, 4)
     }
   }
 

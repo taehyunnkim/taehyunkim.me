@@ -13,7 +13,7 @@ import { IntroductionComponent } from './components/introduction/introduction.co
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,6 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppModule { 
   constructor(library: FaIconLibrary) {
-    library.addIcons(faBars);
+    library.addIcons(...[faBars, faXmark]);
   }
 }

@@ -1,11 +1,15 @@
 <div class="appContainer">
   <div id="overlay" class="overlay">
-    <a class="closebtn" (click)="hideOverlay()">&times;</a>
     <div class="overlay-content">
-      <a (click)="openCurtain()">Projects</a>
-      <a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a>
-      <a href="https://github.com/taehyunnkim" target="_blank">Github</a>
-      <a href="assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a>
+      <header>
+        <fa-icon [icon]="['fas', 'xmark']" class="closebtn" (click)="hideOverlay()"></fa-icon>
+      </header>
+      <div class="overlay-nav">
+        <a (click)="openCurtain()">Projects</a>
+        <a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a>
+        <a href="https://github.com/taehyunnkim" target="_blank">Github</a>
+        <a href="assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a>
+      </div>
     </div>
   </div>
   <div id="app-left-col">
