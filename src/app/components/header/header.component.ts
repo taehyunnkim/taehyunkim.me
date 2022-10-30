@@ -6,22 +6,22 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() openOverlay: EventEmitter<any> = new EventEmitter();
-  @Output() openCurtain: EventEmitter<any> = new EventEmitter();
+  @Output() hamburgerClick: EventEmitter<any> = new EventEmitter();
+  @Output() displayProjectPage: EventEmitter<any> = new EventEmitter();
   @Output() closeCurtain: EventEmitter<any> = new EventEmitter();
-
+  
   ngOnInit(): void {
   }
 
-  displayOverlay() {
-    this.openOverlay.emit(null);
+  toggleOverlay(): void {
+    this.hamburgerClick.emit(null);
   }
 
-  displayCurtain() {
-    this.openCurtain.emit(null);
+  showProjectPage(): void {
+    this.displayProjectPage.emit(null);
   }
 
-  hideCurtain() {
+  hideCurtain(): void {
     this.closeCurtain.emit(null);
   }
 }

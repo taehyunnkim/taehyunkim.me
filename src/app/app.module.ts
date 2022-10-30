@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
 import { ButtonComponent } from './components/button/button.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,30 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
     RouterModule.forRoot([
-      {path: 'home', component: IntroductionComponent},
-      {path: 'projects', component: ProjectListComponent},
-      {path: '', redirectTo: 'home', pathMatch: 'full'},
-      {path: '**', component: ProjectListComponent},
+      {
+        path: 'home', 
+        component: IntroductionComponent,
+        data: { animation: 'HomePage' }
+      },
+      {
+        path: 'projects', 
+        component: ProjectListComponent,
+        data: { animation: 'ProjectPage' }
+      },
+      {
+        path: 'projects/:string', 
+        component: PostComponent,
+        data: { animation: 'PostPage' }
+      },
+      {
+        path: '', 
+        redirectTo: 'home', 
+        pathMatch: 'full'
+      },
     ]),
     FontAwesomeModule,
   ],

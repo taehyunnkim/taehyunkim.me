@@ -8,14 +8,22 @@ $debug: false;
 }
 
 div {
-    height: 70%;
-    width: 100%;
     position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    z-index: 30;
+    margin-bottom: $header-magin-top;
+    
+    button {
+        text-align: center;
+    }
+}
+
+.project-container {
+    position: relative;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    margin-top: $content-margin;
 }
 
 h1 {
@@ -23,14 +31,41 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    position: relative;
+    margin-top: $content-margin;
+    z-index: 30;
+    color: $black;
+}
+
+@include tablet {
+    .project-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+}
+
 @include mobile {
     h1 {
         font-size: 1.4em;
+    }
+
+    .project-container {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 1em;
     }
 }
 
 @include sm-mobile {
     h1 {
         font-size: 1.4em;
+    }
+
+    .project-container {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 1em;
     }
 }

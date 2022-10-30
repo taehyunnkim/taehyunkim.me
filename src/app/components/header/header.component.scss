@@ -10,7 +10,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 3;
+    z-index: 100;
 
     @if $debug {
         border: 1px solid purple;
@@ -174,7 +174,6 @@ ul {
         position: relative;
         display: block;
         color: $black;
-        z-index: 3;
     }
 
     .base {

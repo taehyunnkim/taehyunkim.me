@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
   
   constructor(public breakpointObserver: BreakpointObserver) {
     this.startDate = "January 2000";
-    this.title = "Placeholder title"
+    this.title = "title"
     this.description = "This is a place holder description for this card."
     this.imgSrc = "";
     this.link = "";

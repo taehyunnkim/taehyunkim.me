@@ -6,7 +6,7 @@
 
     <nav class="main-nav">
         <ul>
-            <li class="navItem" (click)="displayCurtain()">
+            <li class="navItem" (click)="showProjectPage()">
                 <span class="base">Projects</span>
                 <span class="hover">Projects</span>
             </li>
@@ -25,6 +25,6 @@
         </ul>
     </nav>
     <nav class="mobile-nav">
-        <fa-icon [icon]="['fas', 'bars']" (click)="displayOverlay()" size="lg"></fa-icon>
+        <fa-icon [icon]="['fas', 'bars']" (click)="toggleOverlay()" size="lg"></fa-icon>
     </nav>
 </header>

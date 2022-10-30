@@ -1,6 +1,95 @@
 <div>
-    <h1>The Project Page Is In Development 😢</h1>
-    <p>Please Come Back Soon!</p>
-    <app-button text="Home" (onClick)="homeButtonClick()"></app-button>
+    <h2>Technical Projects</h2>
+    <div class="project-container">
+        <app-card 
+            title="Portfolio"
+            imgSrc="assets/projects/logo.png" 
+            description="My Personal Portfolio."
+            startDate="October 2022"
+            [tags]="['Typescript', 'Angular', 'Front-end']"
+            (click)="showPost('Portfolio')"
+            [routerLink]="['/projects', 'Portfolio']">
+        </app-card>
+        <app-card 
+            title="securitytag"
+            imgSrc="assets/projects/securitytag.png" 
+            description="A browser extension that gives security recommendations."
+            startDate="October 2022"
+            link="https://github.com/taehyunnkim/securitytag"
+            [tags]="['Typescript', 'React', 'Front-end']">
+        </app-card>
+        <app-card 
+            title="gomt"
+            imgSrc="assets/projects/gomt.png" 
+            startDate="May 2022"
+            description="A console utility for MikroTik devices."
+            link="https://github.com/taehyunnkim/gomt"
+            [tags]="['Go', 'TUI']">
+        </app-card>
+        <app-card 
+            title="Vocaby"
+            imgSrc="assets/projects/vocaby.png"
+            description="An Android application for building vocabulary."
+            startDate="July 2021"
+            link="https://vocaby.app"
+            [tags]="['Kotlin', 'Java', 'Python', 'Full-stack']">
+        </app-card>
+        <app-card 
+            title="Camera Disabler"
+            imgSrc="assets/projects/disablecamera.png"
+            description="A simple Android app to disable camera."
+            startDate="November 2021"
+            link="https://github.com/taehyunnkim/disable-cam"
+            [tags]="['Java', 'Android']">
+        </app-card>
+        <app-card 
+            title="tagdir"
+            imgSrc="assets/projects/tagdir.png"
+            description="A directory tagger for my linux system."
+            startDate="October 2021"
+            link="https://github.com/taehyunnkim/tagdir"
+            [tags]="['C++', 'TUI']">
+        </app-card>
+        <app-card 
+            title="Jungdam Bento"
+            imgSrc="assets/projects/jungdam.png" 
+            description="A commercial website for a local bento business in Busan."
+            startDate="March 2021"
+            link="https://jungdamdosirak.co.kr"
+            [tags]="['Javascript', 'React', 'Front-end']">
+        </app-card>
+        <app-card 
+            title="Disaster Live"
+            imgSrc="assets/projects/disaster.png"
+            description=" A web application to inform users of ongoing world disasters."
+            startDate="April 2020"
+            link="https://github.com/taehyunnkim/disaster-live"
+            [tags]="['Javascript', 'React', 'Front-end']">
+        </app-card>
+        <app-card 
+            title="UWLeaders"
+            imgSrc="assets/projects/uwleaders.png"
+            description="A website for UWLeaders."
+            startDate="April 2020"
+            link="https://github.com/taehyunnkim/UWLeaders"
+            [tags]="['Javascript', 'Firebase', 'Full-stack']">
+        </app-card>
+        <app-card 
+            title="Project Earth"
+            imgSrc="assets/projects/earth.png"
+            description="An interactive Earth visualization app."
+            startDate="Feb 2020"
+            link="https://github.com/taehyunnkim/project-earth"
+            [tags]="['Javascript', 'three.js']">
+        </app-card>
+        <app-card 
+            title="Olympic"
+            imgSrc="assets/projects/olympic.png" 
+            startDate="May 2019"
+            description="An interactive app about the The Olympics."
+            link="https://github.com/taehyunnkim/The-Olympics"
+            [tags]="['R', 'Data Science']">
+        </app-card>
+    </div>
 </div>
 

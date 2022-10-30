@@ -2,10 +2,10 @@
   <div id="overlay" class="overlay">
     <div class="overlay-content">
       <header>
-        <fa-icon [icon]="['fas', 'xmark']" class="closebtn" (click)="hideOverlay()"></fa-icon>
       </header>
       <div class="overlay-nav">
-        <a (click)="openCurtain()">Projects</a>
+        <a (click)="closeCurtain()">Home</a>
+        <a (click)="displayProjectPage()">Projects</a>
         <a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a>
         <a href="https://github.com/taehyunnkim" target="_blank">Github</a>
         <a href="assets/pdf/TaeHyunKim_resume_2022.pdf" target="_blank">Resume</a>
@@ -17,9 +17,15 @@
     <span class="curtain"></span>
   </div>
   <div id="app-middle">
-    <app-header (openOverlay)="displayOverlay()" (openCurtain)="openCurtain()" (closeCurtain)="closeCurtain()"></app-header>
+    <app-header 
+      (hamburgerClick)="toggleOverlay()" 
+      (displayProjectPage)="displayProjectPage()" 
+      (closeCurtain)="closeCurtain()">
+    </app-header>
     <span class="curtain"></span>
-    <router-outlet></router-outlet>
+    <div class="content-container" [@routeAnimations]="getRouteAnimationData()">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <div id="app-right-col">
     <span class="curtain"></span>

@@ -1,34 +1,45 @@
 import { Component, Renderer2 } from '@angular/core';
-import { ResolveEnd, Router } from '@angular/router';
+import {ActivatedRoute, ChildrenOutletContexts, ResolveEnd, Router } from '@angular/router';
 import { NavigationService } from './services/NavigationService';
+import { PostService } from './services/PostService';
 import { Subscription } from 'rxjs';
+import { routeAnimations } from './animations/RouteAnimation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers:[NavigationService],
-  styleUrls: ['./app.component.scss']
+  providers:[NavigationService, PostService],
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    routeAnimations
+  ]
 })
 export class AppComponent {
   curtainOpen: boolean = false;
+  overlayOpen: boolean = false;
   curtains: NodeListOf<HTMLElement> | null = null;
   overlay: HTMLElement | null = null;
-  subscription: Subscription | null = null;
+  navigationSubscription: Subscription | null = null;
+  postSubscription: Subscription | null = null;
   
   constructor(
     private renderer: Renderer2, 
     private router: Router,
+    private route: ActivatedRoute,
     private navigationService: NavigationService,
+    private postService: PostService,
+    private contexts: ChildrenOutletContexts,
   ) {
     this.router.events.subscribe((routerData) => {
       if(routerData instanceof ResolveEnd){ 
-        if(routerData.url === '/projects'){
+        console.log(routerData);
+        if(routerData.url != '/' && routerData.url != '/home'){
           this.openCurtain()
         } else {
           this.closeCurtain()
         }
       } 
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -45,37 +56,51 @@ export class AppComponent {
       });
     }
 
-    this.subscription = this.navigationService.navigateHome$
+    this.navigationSubscription = this.navigationService.navigateHome$
       .subscribe( _ => {
         this.router.navigate(["home"]);
       });
   }
 
   ngOnDestroy() {
-    this.subscription?.unsubscribe();
+    this.navigationSubscription?.unsubscribe();
   }  
 
   displayOverlay(): void {
     if (this.overlay != null) {
       this.renderer.setStyle(this.overlay, 'height', '100%');
+      this.overlayOpen = true;
     }
   }
 
   hideOverlay(): void {
     if (this.overlay != null) {
       this.renderer.setStyle(this.overlay, 'height', '0%');
+      this.overlayOpen = false;
     }
   }
 
-  openCurtain(): void {
-    if (this.curtains != null && !this.curtainOpen) {
-      this.curtainOpen = !this.curtainOpen;
+  toggleOverlay(): void {
+    if (this.overlayOpen) {
       this.hideOverlay();
+    } else {
+      this.displayOverlay();
+    }
+  }
+
+  displayProjectPage(): void {
+    this.openCurtain();
+    this.router.navigate(["projects"]);
+  }
+
+  openCurtain(): void {
+    if (this.curtains != null) {
+      this.curtainOpen = true;
+      this.hideOverlay();
+
       this.curtains.forEach((curtain: HTMLElement) => {
         this.renderer.setStyle(curtain, 'width', '100%');
       });
-
-      this.router.navigate(["projects"]);
     }
   }
 
@@ -85,8 +110,14 @@ export class AppComponent {
       this.curtains.forEach((curtain: HTMLElement) => {
         this.renderer.setStyle(curtain, 'width', '0%');
       });
-
+      
       this.router.navigate([""]);
     }
+    
+    this.hideOverlay();
+  }
+
+  getRouteAnimationData(): string {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

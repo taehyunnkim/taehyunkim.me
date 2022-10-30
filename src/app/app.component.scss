@@ -69,7 +69,7 @@ $background-color: #F1F1F1;
     position: fixed;
     height: 0%;
     width: calc($sm-mobile-width - 2px);
-    z-index: 15;
+    z-index: 60;
     left: 0;
     right: 0;
     top: 0;
@@ -132,7 +132,7 @@ $background-color: #F1F1F1;
     top: 0;
     left: 0;
     right: 0;
-    height: 80%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -141,6 +141,12 @@ $background-color: #F1F1F1;
     a {
         padding: 12px;
     }
+}
+
+.content-container {
+    position: relative;
+    z-index: 50;
+    flex: 1;
 }
 
 @include desktop {
