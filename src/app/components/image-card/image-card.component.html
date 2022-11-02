@@ -1,3 +1,7 @@
-<div>
+<div [ngStyle]="{
+    'padding': background ? '24px' : '0px', 
+    'background-color': background ? 'white' : 'transparent',
+    'box-shadow': background ? 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px' : 'none'
+}">
     <img src="{{ imgSrc }}" [style.height.px]="size" />
 </div>

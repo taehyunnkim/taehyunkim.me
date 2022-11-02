@@ -3,10 +3,6 @@
 
 $debug: false;
 
-h1 {
-    font-size: 3.5em;
-}
-
 h2 {
     font-size: 1.3em;
 }
@@ -17,11 +13,15 @@ p {
 
 #introduction {
     display: flex;
+    gap: 2em;
     margin-top: $header-magin-top;
     padding: 0 42px;
 
     & > section:first-child {
-        flex: 4;
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         p > span {
             font-weight: 600;
@@ -31,10 +31,57 @@ p {
 }
 
 #introduction-picture {
+    position: relative;
     flex: 3;
     align-items: stretch;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+
+    .greetings {
+        position: absolute;
+        font-size: 3.5em;
+        line-height: 120%;
+        top: 60px;
+        right: -34px;
+    }
+}
+
+.scrolling-words-container {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+}
+  
+.scrolling-words-box {
+    height: 2em;
+    overflow: hidden;
+    
+    ul {
+        padding: 0;
+        animation: scrollUp 16s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+        margin-top: 2px;
+        margin-left: 0.4em;
+    }
+}
+
+.scrolling-word {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    font-family: 'Stardos Stencil', sans-serif;
+    list-style: none; 
+    color: $black;
+    font-weight: 600;
+}
+
+$item-count: 5;
+
+@keyframes scrollUp {
+    @for $i from 1 through ($item-count - 1) {
+        #{($i * 25) - 10%}, #{$i * 25%} {
+            transform: translateY((-100% / $item-count) * $i);
+        }
+    }
 }
 
 #recent-projects {
@@ -73,6 +120,7 @@ footer {
 }
 
 @include desktop-tablet {
+    
 }
 
 @include tablet {
@@ -88,7 +136,46 @@ footer {
 
     #introduction {
         padding: 0 12px;
-        margin-top: 24px;
+        margin-top: 32px;
+
+        & > section:first-child {
+            flex: 4;
+        }
+    }
+
+    #introduction-picture {
+        .greetings {
+            position: absolute;
+            font-size: 2.2em;
+            top: 60px;
+            right: -70px;
+            line-height: 120%;
+        }
+    }
+
+    .scrolling-words-container {
+        display: flex;
+        align-items: center;
+        height: 1em;
+
+        h1 {
+            font-size: 0.7em;
+        }
+    }
+      
+    .scrolling-words-box {
+        overflow: hidden;
+        height: 1em;
+
+        ul {
+            margin-left: 0.2em;
+        }
+    }
+
+    .scrolling-word {
+        font-size: 0.7em;
+        height: 1.2em;
+        margin-top: 2px;
     }
 }
 
@@ -99,14 +186,20 @@ footer {
     #introduction {
         padding: 0;
         margin-top: 24px;
+        flex-direction: column-reverse;
     }
 
     #introduction-picture {
-        display: none;
-    }
+        text-align: center;
 
-    h1 {
-        font-size: 3em;
+        .greetings {
+            text-align: start;
+            position: absolute;
+            font-size: 2em;
+            line-height: 120%;
+            top: 60px;
+            right: 20px;
+        }
     }
 
     p {
@@ -119,16 +212,51 @@ footer {
         grid-template-rows: repeat(3, 1fr);
         row-gap: 1em;
     }
+
+    .scrolling-words-container {
+        display: flex;
+        align-items: center;
+        height: 1em;
+
+        h1 {
+            font-size: 0.7em;
+        }
+    }
+      
+    .scrolling-words-box {
+        overflow: hidden;
+        height: 1em;
+
+        ul {
+            margin-left: 0.2em;
+        }
+    }
+
+    .scrolling-word {
+        font-size: 0.7em;
+        height: 1.2em;
+        margin-top: 2px;
+    }
 }
 
 @include sm-mobile {
     #introduction {
         padding: 0;
         margin-top: 32px;
+        flex-direction: column-reverse;
     }
 
     #introduction-picture {
-        display: none;
+        text-align: center;
+
+        .greetings {
+            text-align: start;
+            position: absolute;
+            font-size: 0.8em;
+            line-height: 3em;
+            top: 60px;
+            right: -2vw;
+        }
     }
 
     h1 {
@@ -144,5 +272,85 @@ footer {
         grid-template-columns: 100%;
         grid-template-rows: repeat(3, 1fr);
         row-gap: 1em;
+    }
+
+    .scrolling-words-container {
+        display: flex;
+        align-items: center;
+        height: 1em;
+
+        h1 {
+            font-size: 0.64em;
+        }
+    }
+      
+    .scrolling-words-box {
+        overflow: hidden;
+        height: 1em;
+
+        ul {
+            margin-left: 0.2em;
+        }
+    }
+
+    .scrolling-word {
+        font-size: 0.64em;
+        height: 1.4em;
+    }
+}
+
+@include fold {
+    #introduction {
+        padding: 0;
+        margin-top: 32px;
+        flex-direction: column-reverse;
+    }
+
+    #introduction-picture {
+        text-align: center;
+
+        .greetings {
+            display: none;
+        }
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    #card-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 1em;
+    }
+
+    .scrolling-words-container {
+        display: flex;
+        align-items: center;
+        height: 1em;
+
+        h1 {
+            font-size: 0.54em;
+        }
+    }
+      
+    .scrolling-words-box {
+        overflow: hidden;
+        height: 1em;
+
+        ul {
+            margin-left: 0.2em;
+            margin-top: 2px;
+        }
+    }
+
+    .scrolling-word {
+        font-size: 0.54em;
+        height: 1.7em;
     }
 }

@@ -1,20 +1,43 @@
 <article id="introduction">
     <section>
-      <h1>Hi, I'm Eric!</h1>
+      <div class="scrolling-words-container">
+        <h1>I'm a</h1>
+        <div class="scrolling-words-box">
+          <ul>
+            <li class="scrolling-word">Full-stack Developer</li>
+            <li class="scrolling-word">Curious Student</li>
+            <li class="scrolling-word">Software Engineer</li>
+            <li class="scrolling-word">Security Enthusiast</li>
+            <li class="scrolling-word">Full-stack Developer</li>
+          </ul>
+        </div>
+        
+      </div>
       <p>
-        I'm an undergraduate student pursing Informatics at the <span>University of Washington</span>.
+        who is passionate about developing practical solutions to modern security challenges.
       </p>
       <br>
       <p>
-        Currently, I'm passionate about developing practical solutions to modern security challenges.
+        I'm currently pursing an Informatics degree at the <span>University of Washington</span>.
       </p>
       <br>
       <p>
-        With my personal and professional experience in Cybersecurity and Full-stack development, I aspire to empower individuals and organizations in today's evolving threat landscape!  
+        With my personal and professional experience in Cybersecurity and Software Development, I aspire to empower individuals and organizations in today's evolving threat landscape!  
       </p>
     </section>
     <section id="introduction-picture">
-      <app-image-card imgSrc="assets/images/me.jpg" [sizeBig]=310 [sizeMedium]=280 ></app-image-card>
+      <div class="greetings">
+        <h1>Hi</h1>
+        <h1>I'm Eric!</h1>
+      </div>
+      <app-image-card 
+        class="introduction-picture"
+        imgSrc="assets/images/profile.png" 
+        [sizeBig]=400
+        [sizeMedium]=350
+        [sizeSmall]=300
+        [background]=false
+      ></app-image-card>
     </section>
   </article>
   <article id="recent-projects">

@@ -19,6 +19,7 @@ export class AppComponent {
   overlayOpen: boolean = false;
   curtains: NodeListOf<HTMLElement> | null = null;
   overlay: HTMLElement | null = null;
+  contentContainer: HTMLElement | null = null;
   navigationSubscription: Subscription | null = null;
   postSubscription: Subscription | null = null;
   
@@ -45,6 +46,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.curtains = document.querySelectorAll('.curtain');
     this.overlay = document.getElementById('overlay');
+    this.contentContainer = document.querySelector('.content-container');
 
     if (this.curtainOpen && this.curtains) {
       this.curtains.forEach((curtain: HTMLElement) => {
@@ -97,7 +99,7 @@ export class AppComponent {
     if (this.curtains != null) {
       this.curtainOpen = true;
       this.hideOverlay();
-
+      this.renderer.setStyle(this.contentContainer , 'z-index', '50');
       this.curtains.forEach((curtain: HTMLElement) => {
         this.renderer.setStyle(curtain, 'width', '100%');
       });
@@ -111,6 +113,7 @@ export class AppComponent {
         this.renderer.setStyle(curtain, 'width', '0%');
       });
       
+      this.renderer.setStyle(this.contentContainer , 'z-index', '1');
       this.router.navigate([""]);
     }
     

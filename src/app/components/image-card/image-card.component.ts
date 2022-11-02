@@ -11,6 +11,7 @@ export class ImageCardComponent implements OnInit {
   @Input() sizeBig: number;
   @Input() sizeMedium: number;
   @Input() sizeSmall: number;
+  @Input() background: boolean;
   size: number;
 
   constructor(public breakpointObserver: BreakpointObserver) {
@@ -19,6 +20,7 @@ export class ImageCardComponent implements OnInit {
     this.sizeMedium = 300;
     this.sizeSmall = 100; 
     this.size = 0;
+    this.background = true;
   }
 
   ngOnInit(): void {
