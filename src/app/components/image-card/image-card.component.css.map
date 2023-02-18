@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,GAAG,CAAC;EACA,gBAAgB,EAAE,KAAK;EACvB,aAAa,ECSR,GAAG;EDRR,OAAO,ECEI,IAAI;EDDf,UAAU,EEHD,kBAAkB,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,EAAE,mBAAmB,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG;CFInF;;AAED,AAAA,GAAG,CAAC;EACA,MAAM,EAAE,IAAI;EACZ,aAAa,ECER,GAAG;CDDX",
+    "sources": [
+        "image-card.component.scss",
+        "../../../styles/sizes.scss",
+        "../../../styles/vars.scss"
+    ],
+    "names": [],
+    "file": "image-card.component.css"
+}

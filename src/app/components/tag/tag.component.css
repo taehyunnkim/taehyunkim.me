@@ -1,0 +1,27 @@
+div {
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 4px;
+  background-color: #F1F1F1;
+  border-radius: 4px;
+}
+
+p {
+  font-size: 0.7em;
+  font-weight: 600;
+  color: #6e6e6e;
+}
+
+@media (min-width: 94vw) and (max-width: 479px) {
+  div {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 4px;
+    background-color: #F1F1F1;
+    border-radius: 4px;
+  }
+  p {
+    font-size: 0.4em;
+  }
+}
+/*# sourceMappingURL=tag.component.css.map */

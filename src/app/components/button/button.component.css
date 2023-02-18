@@ -1,0 +1,55 @@
+button {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+          box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: "Raleway",sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  margin: 12px;
+}
+
+button:hover,
+button:focus {
+  border-color: #36454F;
+  color: #36454F;
+}
+
+button:active {
+  background-color: #F0F0F1;
+  border-color: #36454F;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: #36454F;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+/*# sourceMappingURL=button.component.css.map */

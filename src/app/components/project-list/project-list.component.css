@@ -1,0 +1,75 @@
+:host {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+div {
+  position: relative;
+  z-index: 30;
+  margin-bottom: 48px;
+}
+
+div button {
+  text-align: center;
+}
+
+.project-container {
+  position: relative;
+  z-index: 30;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin-top: 32px;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+h2 {
+  position: relative;
+  margin-top: 32px;
+  z-index: 30;
+  color: #36454F;
+}
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .project-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  .project-container {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: (1fr)[3];
+        grid-template-rows: repeat(3, 1fr);
+    row-gap: 1em;
+  }
+}
+
+@media (min-width: 94vw) and (max-width: 479px) {
+  h1 {
+    font-size: 1.4em;
+  }
+  .project-container {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: (1fr)[3];
+        grid-template-rows: repeat(3, 1fr);
+    row-gap: 1em;
+  }
+}
+/*# sourceMappingURL=project-list.component.css.map */
