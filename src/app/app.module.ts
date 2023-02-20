@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { PostComponent } from './components/post/post.component';
+import { IugaComponent } from './components/iuga/iuga.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,14 @@ import { PostComponent } from './components/post/post.component';
     IntroductionComponent,
     ProjectListComponent,
     ButtonComponent,
+    IugaComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
+    PdfViewerModule,
     RouterModule.forRoot([
       {
         path: 'home', 
@@ -47,6 +51,11 @@ import { PostComponent } from './components/post/post.component';
       {
         path: 'projects/:string', 
         component: PostComponent,
+        data: { animation: 'PostPage' }
+      },
+      {
+        path: 'iuga', 
+        component: IugaComponent,
         data: { animation: 'PostPage' }
       },
       {
