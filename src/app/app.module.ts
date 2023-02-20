@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +37,7 @@ import { IugaComponent } from './components/iuga/iuga.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
-    PdfViewerModule,
+    NgxExtendedPdfViewerModule,
     RouterModule.forRoot([
       {
         path: 'home', 
