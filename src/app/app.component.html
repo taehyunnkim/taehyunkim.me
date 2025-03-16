@@ -1,7 +1,7 @@
 <div class="appContainer">
   <div id="overlay" class="overlay">
     <div class="overlay-content">
-      <header>
+      <!-- <header>
       </header>
       <div class="overlay-nav">
         <a (click)="closeCurtain()">Home</a>
@@ -9,15 +9,20 @@
         <a href="https://www.linkedin.com/in/taehyunnkim/" target="_blank">Linkedin</a>
         <a href="https://github.com/taehyunnkim" target="_blank">Github</a>
         <a href="assets/pdf/TaeHyunKim_resume_2022_2.pdf" target="_blank">Resume</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <div id="app-left-col">
-    <img id="background-logo" src="assets/images/logo_gray.png" />
-    <span class="curtain"></span>
+    <!-- <img id="background-logo" src="assets/images/logo_gray.png" />
+    <span class="curtain"></span> -->
   </div>
   <div id="app-middle">
-    <app-header 
+    <img id="background-logo" src="assets/images/logo_gray.png" />
+    <div class="message">
+      <p>Hey! The portfolio website is being rebuilt.</p>
+      <p>Thank you for visiting!</p>
+    </div>
+    <!-- <app-header 
       (hamburgerClick)="toggleOverlay()" 
       (displayProjectPage)="displayProjectPage()" 
       (closeCurtain)="closeCurtain()">
@@ -25,9 +30,9 @@
     <span class="curtain"></span>
     <div class="content-container" [@routeAnimations]="getRouteAnimationData()">
       <router-outlet></router-outlet>
-    </div>
+    </div> -->
   </div>
   <div id="app-right-col">
-    <span class="curtain"></span>
+    <!-- <span class="curtain"></span> -->
   </div>
 </div>

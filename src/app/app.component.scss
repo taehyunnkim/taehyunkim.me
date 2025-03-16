@@ -33,6 +33,17 @@ $background-color: #F1F1F1;
     border-right: $divider-color;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    #background-logo {
+        width: 85px;
+    }
+
+    .message {
+        margin-top: 12px;
+        font-size: 80%;
+    }
 }
 
 #app-right-col {
