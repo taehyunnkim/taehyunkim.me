@@ -9,6 +9,6 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://taehyunkim.me',
+  site: 'https://kimtaehyun.com',
   integrations: [react(), icon(), mdx()]
 });

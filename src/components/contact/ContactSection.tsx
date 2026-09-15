@@ -32,11 +32,11 @@ const ContactSection: React.FC = () => {
                     <div className={styles.contactItem}>
                         <h3 className={styles.contactLabel}>Email</h3>
                         <a 
-                            href="mailto:contact@taehyunkim.me" 
+                            href="mailto:contact@kimtaehyun.com" 
                             className={styles.contactLink}
                             aria-label="Send email to TaeHyun Kim"
                         >
-                            contact@taehyunkim.me
+                            contact@kimtaehyun.com
                         </a>
                     </div>
                     
