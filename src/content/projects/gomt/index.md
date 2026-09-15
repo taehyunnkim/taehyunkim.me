@@ -1,6 +1,6 @@
 ---
 title: "Mikotrik Device TUI"
-description: "A console utility for MikroTik deavices."
+description: "A console utility for MikroTik devices."
 tags: ["personal", "ongoing"]
 skills: ["Go", "Linux"]
 date: "2022-05-04"
