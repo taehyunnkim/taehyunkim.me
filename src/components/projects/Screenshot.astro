@@ -13,6 +13,9 @@
  *
  *   <Screenshot src="/projects/<id>/screenshots/home.png" alt="Home page" />
  *
+ * Pass frame="none" to drop the browser bar (e.g. mobile or design shots).
+ * Pass plain to also drop the border, shadow and hover (e.g. GIFs with their own window).
+ *
  * Wrap several in <ScreenshotGrid> to show them side by side.
  */
 import { Image } from 'astro:assets';
@@ -24,32 +27,41 @@ interface Props {
   caption?: string;
   url?: string;
   width?: number;
+  frame?: 'browser' | 'none';
+  plain?: boolean;
 }
 
-const { src, alt, caption, url, width = 1600 } = Astro.props;
+const { src, alt, caption, url, width = 1600, frame = 'browser', plain = false } = Astro.props;
 
-// Public paths can't go through astro:assets, so render them as plain <img>
+// Public paths can't go through astro:assets, and optimizing GIFs can drop
+// their animation, so both render as plain <img>
 const isPublicPath = typeof src === 'string';
+const rawSrc = isPublicPath ? src : src.format === 'gif' ? src : undefined;
+const rawProps = rawSrc && typeof rawSrc !== 'string'
+  ? { src: rawSrc.src, width: rawSrc.width, height: rawSrc.height }
+  : { src: rawSrc };
 
 // Never upscale imported images past their intrinsic size
-const frameWidth = isPublicPath ? width : Math.min(width, src.width);
-const lightboxWidth = isPublicPath ? 2400 : Math.min(2400, src.width);
+const frameWidth = typeof src === 'string' ? width : Math.min(width, src.width);
+const lightboxWidth = typeof src === 'string' ? 2400 : Math.min(2400, src.width);
 ---
 
 <figure class="screenshot">
-  <button type="button" class="frame" aria-label={`Enlarge screenshot: ${alt}`}>
-    <div class="chrome" aria-hidden="true">
-      <span class="dots"><span></span><span></span><span></span></span>
-      <span class="address">{url}</span>
-    </div>
-    {isPublicPath
-      ? <img src={src} alt={alt} loading="lazy" decoding="async" />
+  <button type="button" class:list={['frame', { plain }]} aria-label={`Enlarge screenshot: ${alt}`}>
+    {frame === 'browser' && !plain && (
+      <div class="chrome" aria-hidden="true">
+        <span class="dots"><span></span><span></span><span></span></span>
+        <span class="address">{url}</span>
+      </div>
+    )}
+    {rawSrc
+      ? <img {...rawProps} alt={alt} loading="lazy" decoding="async" />
       : <Image src={src} alt={alt} width={frameWidth} loading="lazy" />}
   </button>
   {caption && <figcaption>{caption}</figcaption>}
   <dialog class="lightbox" aria-label={alt}>
-    {isPublicPath
-      ? <img src={src} alt={alt} loading="lazy" decoding="async" />
+    {rawSrc
+      ? <img {...rawProps} alt={alt} loading="lazy" decoding="async" />
       : <Image src={src} alt={alt} width={lightboxWidth} loading="lazy" />}
   </dialog>
 </figure>
@@ -95,6 +107,14 @@ const lightboxWidth = isPublicPath ? 2400 : Math.min(2400, src.width);
   .frame:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
+  }
+
+  .frame.plain,
+  .frame.plain:hover,
+  .frame.plain:focus-visible {
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
   }
 
   .chrome {

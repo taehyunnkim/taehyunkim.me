@@ -8,7 +8,7 @@ import TextButton from '@/components/TextButton';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects'))
-    .filter((p: CollectionEntry<'projects'>) => (p.body ? p.body.trim().length > 0 : false) || !!p.data.link);
+    .filter((p: CollectionEntry<'projects'>) => (p.body ? p.body.trim().length > 0 : false) || !!p.data.link || !!p.data.github);
   return projects.map((project: CollectionEntry<'projects'>) => ({
     params: { id: project.id.split('/').pop() || project.id },
     props: { project },
@@ -24,7 +24,7 @@ const { Content } = await render( project );
 
 // Get thumbnail path using centralized utility
 const projectId = project.id.split('/').pop() || project.id;
-const thumbnailPath = resolveThumbnailPath(projectId, project.data.thumbnail);
+const thumbnailPath = await resolveThumbnailPath(projectId, project.data.thumbnail, { width: 1800, quality: 90 });
 ---
 
 <RootLayout title={`${project.data.title} - TaeHyun Kim`}>

@@ -264,6 +264,14 @@ export const skills: Skills = {
             image: "/skills/linux.png"
         },
         {
+            name: "Data Engineering",
+            image: "/skills/data-engineering.png"
+        },
+        {
+            name: "Automation",
+            image: "/skills/automation.png"
+        },
+        {
             name: "DevSecOps",
             image: "/skills/security.png"
         },

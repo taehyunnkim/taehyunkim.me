@@ -1,0 +1,40 @@
+---
+title: "Informatics Undergraduate Student Association"
+description: "A complete overhaul of the IUGA website."
+tags: ["personal", "completed"]
+skills: ["Javascript", "React", "Express.js", "MongoDB"]
+date: "2024-01-01"
+featured: false
+github: https://github.com/UW-IUGA
+link: https://iuga.info/
+---
+
+import Screenshot from '@/components/projects/Screenshot.astro';
+import landing from './screenshots/landing.png';
+import calendarClosed from './screenshots/calendar-closed.png';
+import calendarOpen from './screenshots/calendar-open.png';
+import resources from './screenshots/resources.png';
+import about from './screenshots/about.png';
+import oldWebsite from './screenshots/old-iuga-website.png';
+
+## Landing Page
+
+<Screenshot src={landing} alt="IUGA landing page" url="iuga.info" />
+
+## Events Calendar
+
+<Screenshot src={calendarClosed} alt="IUGA events calendar for May 2024" url="iuga.info/events" caption="Monthly calendar color-coded by event category" />
+
+<Screenshot src={calendarOpen} alt="IUGA events calendar with event details panel open" url="iuga.info/events" caption="Selecting a date opens the event details" />
+
+## Resources
+
+<Screenshot src={resources} alt="IUGA resources page" url="iuga.info/resources" />
+
+## About
+
+<Screenshot src={about} alt="IUGA website committee on the about page" url="iuga.info/about" />
+
+## Previous Website
+
+<Screenshot src={oldWebsite} alt="Previous IUGA website before the overhaul" caption="The old IUGA website before the overhaul" />

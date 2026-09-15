@@ -5,4 +5,6 @@ tags: ["open-source", "completed"]
 skills: ["Terraform", "Bash", "AWS"]
 date: "2024-05-14"
 featured: false
+github: https://github.com/open-devsecops
+link: https://open-devsecops.github.io/
 ---

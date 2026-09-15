@@ -5,9 +5,9 @@ import { resolveThumbnailPath } from '@/utils/thumbnails';
 export async function getAllProjects(): Promise<Project[]> {
   const projects = await getCollection('projects');
   
-  return projects.map((project: CollectionEntry<'projects'>) => {
+  const resolved = await Promise.all(projects.map(async (project: CollectionEntry<'projects'>) => {
     const projectId = project.id.split('/').pop() || project.id;
-    const thumbnailPath = resolveThumbnailPath(projectId, project.data.thumbnail);
+    const thumbnailPath = await resolveThumbnailPath(projectId, project.data.thumbnail);
 
     return {
       id: projectId,
@@ -17,12 +17,14 @@ export async function getAllProjects(): Promise<Project[]> {
       tags: project.data.tags,
       skills: project.data.skills,
       featured: project.data.featured || false,
-      hasContent: (project.body ? project.body.trim().length > 0 : false) || !!project.data.link,
+      hasContent: (project.body ? project.body.trim().length > 0 : false) || !!project.data.link || !!project.data.github,
       date: project.data.date,
       link: project.data.link,
       github: project.data.github
     };
-  }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }));
+
+  return resolved.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {

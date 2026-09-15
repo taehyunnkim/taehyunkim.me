@@ -1,0 +1,39 @@
+---
+title: "Vocaby"
+description: "An Android application for building vocabulary."
+tags: ["personal", "completed"]
+skills: ["Kotlin", "Java", "Python", "Nginx", "SQLite", "Django"]
+date: "2021-07-04"
+featured: false
+github: https://github.com/Vocaby
+---
+
+import Screenshot from '@/components/projects/Screenshot.astro';
+import ScreenshotGrid from '@/components/projects/ScreenshotGrid.astro';
+import improveVocab from './screenshots/vocaby-improve-vocab.jpeg';
+import dictionary from './screenshots/vocaby-dictionary.jpeg';
+import dictionary2 from './screenshots/vocaby-dictionary-2.jpeg';
+import logos from './screenshots/vocaby-logos.png';
+import colors from './screenshots/vocaby-colors.png';
+import typography from './screenshots/vocaby-typography.png';
+
+## Improve Your Vocabulary
+
+<Screenshot src={improveVocab} alt="Vocaby collections screen with review notifications and search statistics" frame="none" />
+
+## Lookup Definitions
+
+<Screenshot src={dictionary} alt="Vocaby dictionary search and word definition screen" frame="none" />
+
+## Create Your Own Dictionary
+
+<Screenshot src={dictionary2} alt="Vocaby custom dictionary screen with entry of the day" frame="none" />
+
+## Design System
+
+<Screenshot src={logos} alt="Vocaby logo variations" frame="none" caption="Logos" />
+
+<ScreenshotGrid>
+  <Screenshot src={colors} alt="Vocaby color palette" frame="none" caption="Colors" />
+  <Screenshot src={typography} alt="Vocaby typographic scale" frame="none" caption="Typography" />
+</ScreenshotGrid>
