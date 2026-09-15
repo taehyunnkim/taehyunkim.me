@@ -18,6 +18,7 @@ const SkillsWithProjects: React.FC<SkillsWithProjectsProps> = ({ projects }) => 
     const [selectedSkills, setSelectedSkills] = useState<Set<SkillItem>>(new Set());
     const [isOpen, setIsOpen] = useState(false);
     const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
+    const [contentOnly, setContentOnly] = useState(false);
 
     useEffect(() => {
         // Check URL parameters for pre-selected skill
@@ -46,18 +47,15 @@ const SkillsWithProjects: React.FC<SkillsWithProjectsProps> = ({ projects }) => 
 
     useEffect(() => {
         // Filter projects based on selected skills (exclusive - must have ALL selected skills)
-        if (selectedSkills.size === 0) {
-            setFilteredProjects(projects);
-        } else {
-            const selectedSkillNames = Array.from(selectedSkills).map(skill => skill.name);
-            const filtered = projects.filter(project => 
-                selectedSkillNames.every(skillName => 
-                    project.skills.includes(skillName)
-                )
-            );
-            setFilteredProjects(filtered);
-        }
-    }, [selectedSkills, projects]);
+        const selectedSkillNames = Array.from(selectedSkills).map(skill => skill.name);
+        const filtered = projects.filter(project =>
+            (!contentOnly || project.hasContent) &&
+            selectedSkillNames.every(skillName =>
+                project.skills.includes(skillName)
+            )
+        );
+        setFilteredProjects(filtered);
+    }, [selectedSkills, projects, contentOnly]);
 
     const onFilterClick = () => {
         setIsOpen(true);
@@ -81,24 +79,38 @@ const SkillsWithProjects: React.FC<SkillsWithProjectsProps> = ({ projects }) => 
 
     const clearAllFilters = () => {
         setSelectedSkills(new Set());
+        setContentOnly(false);
     }
+
+    const isFiltered = selectedSkills.size > 0 || contentOnly;
 
     return (
         <div className={styles.skillsWithProjects}>
             {/* Skills Filter Section */}
             <div className={styles.filterSection}>
-                <div className={styles.skillsFilterContainer}>
-                    <TextButton 
-                        text="Select skills" 
-                        onClick={onFilterClick} 
-                        icon={<IoFilterSharp size={16} color="var(--button-border-gray)" />} 
-                    />
-                    {isOpen && (
-                        <>
-                            <div className={styles.modalBackdrop} onClick={closeModal}></div>
-                            <SkillsFilterModal onClose={closeModal} removeSkill={removeSkill} addSkill={addSkill} selectedSkills={selectedSkills} />
-                        </>
-                    )}
+                <div className={styles.filterControls}>
+                    <div className={styles.skillsFilterContainer}>
+                        <TextButton 
+                            text="Select skills" 
+                            onClick={onFilterClick} 
+                            icon={<IoFilterSharp size={16} color="var(--button-border-gray)" />} 
+                        />
+                        {isOpen && (
+                            <>
+                                <div className={styles.modalBackdrop} onClick={closeModal}></div>
+                                <SkillsFilterModal onClose={closeModal} removeSkill={removeSkill} addSkill={addSkill} selectedSkills={selectedSkills} />
+                            </>
+                        )}
+                    </div>
+                    <label className={`${styles.contentToggle} ${contentOnly ? styles.active : ''}`}>
+                        <input
+                            type="checkbox"
+                            checked={contentOnly}
+                            onChange={(e) => setContentOnly(e.target.checked)}
+                        />
+                        <span className={styles.toggleTrack} aria-hidden="true" />
+                        <span>Show Projects w/ Content</span>
+                    </label>
                 </div>
                 <div className={styles.skillsFilterItemsContainer}>
                     {Array.from(selectedSkills).map((skill) => (
@@ -119,7 +131,7 @@ const SkillsWithProjects: React.FC<SkillsWithProjectsProps> = ({ projects }) => 
                 <div className={styles.projectsHeader}>
                     <SectionLabel label="Projects" />
                     <div className={styles.projectsCount}>
-                        {selectedSkills.size > 0 ? (
+                        {isFiltered ? (
                             <span>{filteredProjects.length} of {projects.length} projects</span>
                         ) : (
                             <span>{projects.length} projects</span>
@@ -135,7 +147,7 @@ const SkillsWithProjects: React.FC<SkillsWithProjectsProps> = ({ projects }) => 
                     </div>
                 ) : (
                     <div className={styles.noProjects}>
-                        <p>No projects found using the selected skills.</p>
+                        <p>No projects match the current filters.</p>
                         <TextButton 
                             text="Clear filters to see all projects" 
                             onClick={clearAllFilters} 

@@ -6,6 +6,7 @@ export interface Project {
     tags: ProjectTag[];
     skills: string[]; // skill names that match our skills data
     featured?: boolean;
+    hasContent: boolean;
     date: string;
     link?: string;
     github?: string;

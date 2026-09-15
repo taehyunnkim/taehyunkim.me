@@ -54,6 +54,24 @@ export const skills: Skills = {
             image: "/skills/cpp.png"
         }
     ],
+    "AI Technologies": [
+        {
+            name: "LangGraph",
+            image: "/skills/langgraph.png"
+        },
+        {
+            name: "Mastra",
+            image: "/skills/mastra.png"
+        },
+        {
+            name: "MLFlow",
+            image: "/skills/mlflow.png"
+        },
+        {
+            name: "Claude Agent SDK",
+            image: "/skills/claude.png"
+        }
+    ],
     "Tools & Technologies": [
         {
             name: "React",
@@ -198,6 +216,34 @@ export const skills: Skills = {
         {
             name: "Tableau",
             image: "/skills/tableau.png"
+        },
+        {
+            name: "Temporal",
+            image: "/skills/temporal.png"
+        },
+        {
+            name: "Dagster",
+            image: "/skills/dagster.png"
+        },
+        {
+            name: "Splunk",
+            image: "/skills/splunk.png"
+        },
+        {
+            name: "Bazel",
+            image: "/skills/bazel.png"
+        },
+        {
+            name: "Sass",
+            image: "/skills/sass.png"
+        },
+        {
+            name: "Android",
+            image: "/skills/android.png"
+        },
+        {
+            name: "Prisma",
+            image: "/skills/prisma.png"
         }
     ],
     "Other Skills": [

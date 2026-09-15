@@ -1,8 +1,8 @@
 ---
 title: "Jipgo"
 description: "Coming Early 2026..."
-tags: ["startup", "ongoing"]
-skills: ["React Native", "PostgreSQL", "AWS"]
+tags: ["personal", "ongoing"]
+skills: ["React Native", "Typescript", "PostgreSQL", "AWS"]
 date: "2025-12-24"
 featured: false
 ---

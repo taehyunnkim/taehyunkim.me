@@ -4,10 +4,5 @@ description: "Latest iteration of my portfolio website built with Astro, React, 
 tags: ["personal", "ongoing"]
 skills: ["Astro", "React", "Typescript", "CSS"]
 date: "2025-09-23"
-featured: true
+github: https://github.com/taehyunnkim/taehyunkim.me
 ---
-
-# My Personal Portfolio
-
-## Overview
-Overview

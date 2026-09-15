@@ -8,7 +8,7 @@ export async function getAllProjects(): Promise<Project[]> {
   return projects.map((project: CollectionEntry<'projects'>) => {
     const projectId = project.id.split('/').pop() || project.id;
     const thumbnailPath = resolveThumbnailPath(projectId, project.data.thumbnail);
-    
+
     return {
       id: projectId,
       title: project.data.title,
@@ -17,6 +17,7 @@ export async function getAllProjects(): Promise<Project[]> {
       tags: project.data.tags,
       skills: project.data.skills,
       featured: project.data.featured || false,
+      hasContent: (project.body ? project.body.trim().length > 0 : false) || !!project.data.link,
       date: project.data.date,
       link: project.data.link,
       github: project.data.github

@@ -1,6 +1,6 @@
 import styles from './ProjectCard.module.css';
 import type { Project } from '@/types/project';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 interface ProjectCardProps {
     project: Project;
@@ -8,10 +8,45 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const [imageError, setImageError] = useState(false);
-    const displaySkills = project.skills.slice(0, 3);
-    const hasMoreSkills = project.skills.length > 3;
+    const skillsRef = useRef<HTMLDivElement>(null);
+    const [hiddenCount, setHiddenCount] = useState(0);
+
+    // Show as many skill chips as fit on one row; collapse the rest into "+N more".
+    useLayoutEffect(() => {
+        const row = skillsRef.current;
+        if (!row) return;
+
+        const layout = () => {
+            const chips = Array.from(row.querySelectorAll<HTMLElement>('[data-skill]'));
+            const more = row.querySelector<HTMLElement>('[data-more]');
+
+            chips.forEach((c) => (c.style.display = ''));
+            if (more) more.style.display = 'none';
+
+            const available = row.clientWidth;
+            if (row.scrollWidth <= available) {
+                setHiddenCount(0);
+                return;
+            }
+
+            if (more) more.style.display = 'inline-block';
+            let hidden = 0;
+            for (let i = chips.length - 1; i >= 0; i--) {
+                if (row.scrollWidth <= available) break;
+                chips[i].style.display = 'none';
+                hidden++;
+            }
+            setHiddenCount(hidden);
+        };
+
+        layout();
+        const observer = new ResizeObserver(layout);
+        observer.observe(row);
+        return () => observer.disconnect();
+    }, [project.skills]);
 
     const handleClick = () => {
+        if (!project.hasContent) return;
         window.location.href = `/project/${project.id}`;
     };
 
@@ -30,7 +65,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     };
 
     return (
-        <div className={styles.projectCard} onClick={handleClick}>
+        <div
+            className={`${styles.projectCard} ${project.hasContent ? styles.clickable : ''}`}
+            onClick={project.hasContent ? handleClick : undefined}
+        >
             <div className={styles.projectThumbnail}>
                 {project.thumbnail && !imageError ? (
                     <img 
@@ -61,16 +99,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     </div>
                 </div>
                 <p className={styles.projectDescription}>{project.shortDescription}</p>
-                <div className={styles.projectSkills}>
-                    {displaySkills.map((skill) => (
-                        <span key={skill} className={styles.skillTag}>
-                            {skill}
+                <div className={styles.projectFooter}>
+                    <div className={styles.projectSkills} ref={skillsRef}>
+                        {project.skills.map((skill) => (
+                            <span key={skill} data-skill className={styles.skillTag}>
+                                {skill}
+                            </span>
+                        ))}
+                        <span data-more className={styles.moreSkills}>
+                            +{hiddenCount} more
                         </span>
-                    ))}
-                    {hasMoreSkills && (
-                        <span className={styles.moreSkills}>
-                            +{project.skills.length - 3} more
-                        </span>
+                    </div>
+                    {project.hasContent && (
+                        <span className={styles.readMore}>Read more →</span>
                     )}
                 </div>
             </div>

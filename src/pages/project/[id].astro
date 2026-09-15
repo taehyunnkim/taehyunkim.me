@@ -7,7 +7,8 @@ import { resolveThumbnailPath } from '@/utils/thumbnails';
 import TextButton from '@/components/TextButton';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = (await getCollection('projects'))
+    .filter((p: CollectionEntry<'projects'>) => (p.body ? p.body.trim().length > 0 : false) || !!p.data.link);
   return projects.map((project: CollectionEntry<'projects'>) => ({
     params: { id: project.id.split('/').pop() || project.id },
     props: { project },

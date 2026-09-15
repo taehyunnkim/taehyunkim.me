@@ -1,0 +1,206 @@
+---
+/**
+ * Screenshot in a minimal browser frame. Click to enlarge.
+ *
+ * Usage (in a project's index.mdx, images in ./screenshots/):
+ *
+ *   import Screenshot from '@/components/projects/Screenshot.astro';
+ *   import home from './screenshots/home.png';
+ *
+ *   <Screenshot src={home} alt="Home page" url="example.com" caption="Home page" />
+ *
+ * Files in public/ also work as plain paths (served as-is, not optimized):
+ *
+ *   <Screenshot src="/projects/<id>/screenshots/home.png" alt="Home page" />
+ *
+ * Wrap several in <ScreenshotGrid> to show them side by side.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  caption?: string;
+  url?: string;
+  width?: number;
+}
+
+const { src, alt, caption, url, width = 1600 } = Astro.props;
+
+// Public paths can't go through astro:assets, so render them as plain <img>
+const isPublicPath = typeof src === 'string';
+
+// Never upscale imported images past their intrinsic size
+const frameWidth = isPublicPath ? width : Math.min(width, src.width);
+const lightboxWidth = isPublicPath ? 2400 : Math.min(2400, src.width);
+---
+
+<figure class="screenshot">
+  <button type="button" class="frame" aria-label={`Enlarge screenshot: ${alt}`}>
+    <div class="chrome" aria-hidden="true">
+      <span class="dots"><span></span><span></span><span></span></span>
+      <span class="address">{url}</span>
+    </div>
+    {isPublicPath
+      ? <img src={src} alt={alt} loading="lazy" decoding="async" />
+      : <Image src={src} alt={alt} width={frameWidth} loading="lazy" />}
+  </button>
+  {caption && <figcaption>{caption}</figcaption>}
+  <dialog class="lightbox" aria-label={alt}>
+    {isPublicPath
+      ? <img src={src} alt={alt} loading="lazy" decoding="async" />
+      : <Image src={src} alt={alt} width={lightboxWidth} loading="lazy" />}
+  </dialog>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.screenshot').forEach((figure) => {
+    const frame = figure.querySelector('.frame');
+    const dialog = figure.querySelector('dialog');
+    if (!frame || !dialog) return;
+
+    frame.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', () => dialog.close());
+  });
+</script>
+
+<style>
+  .screenshot {
+    margin: 32px 0;
+  }
+
+  .frame {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+    font: inherit;
+    text-align: left;
+    cursor: zoom-in;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .frame:hover,
+  .frame:focus-visible {
+    transform: translateY(-4px);
+    border-color: #d4d4d4;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 28px, rgba(0, 0, 0, 0.12) 0px 4px 10px;
+  }
+
+  .frame:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  .chrome {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 12px;
+    background-color: var(--background-gray);
+    border-bottom: 1px solid #ececec;
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dcdcdc;
+  }
+
+  .address {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(50%, 320px);
+    height: 20px;
+    padding: 0 10px;
+    border-radius: 6px;
+    background-color: #efefef;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    line-height: 20px;
+    color: #888;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+  }
+
+  .lightbox {
+    max-width: min(1400px, 95vw);
+    max-height: 95vh;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: zoom-out;
+    overflow: visible;
+  }
+
+  .lightbox[open] {
+    animation: fade-in 0.2s ease;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+
+  .lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 480px) {
+    .dots span {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frame,
+    .lightbox[open] {
+      transition: none;
+      animation: none;
+    }
+
+    .frame:hover,
+    .frame:focus-visible {
+      transform: none;
+    }
+  }
+</style>
