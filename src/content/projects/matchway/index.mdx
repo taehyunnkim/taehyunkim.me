@@ -1,0 +1,42 @@
+---
+title: "MatchWay"
+description: "A mobile marketplace where commercial landlords list space by the hour or day and tenants converge on a match."
+tags: ["design", "personal", "completed"]
+skills: ["Figma"]
+date: "2025-06-01"
+featured: false
+---
+
+import Screenshot from '@/components/projects/Screenshot.astro';
+import landing from './screenshots/iphone-landing.png';
+import registration from './screenshots/iphone-registration.png';
+import home from './screenshots/iphone-home.png';
+
+## Overview
+
+MatchWay is a mobile marketplace for short-term commercial space. Property owners list a retail floor or meeting room with hourly and daily rates; tenants — brands running a pop-up, teams needing a room for a week — find and book it. Both sides work from the same listing, so requests, availability and matches stay on one record instead of in a broker's inbox.
+
+## Landing
+
+The first screen leads with the positioning line and a swipeable stack of success stories, so an unfamiliar visitor sees proof of a completed match before being asked to pick a side. Login and sign-up split at the bottom.
+
+<Screenshot src={landing} alt="MatchWay landing screen with tagline, swipeable success story cards, and login options" frame="none" plain />
+
+## Registration
+
+Registration forks on intent — "I have a space to offer" versus "I'm looking for a space" — rather than on a role the user has to translate into product terms. Each branch is illustrated so the choice reads before the button label does.
+
+<Screenshot src={registration} alt="Registration screen offering Register As Property Owner or Register As Tenant" frame="none" plain />
+
+## Your Spaces
+
+The owner's home view puts each listing's economics on one card: hourly and daily rate, the minimum and maximum booking period, and how many requests came in against how many converted to matches. Below it, an availability timeline shows booked runs with the tenant's brand mark and dates attached, so a gap in the schedule is visible without opening a calendar. Home, Matches, Chat and Profile carry the rest of the flow.
+
+<Screenshot src={home} alt="Your Spaces list showing listings with rates, booking periods, request and match counts, and an availability timeline" frame="none" plain />
+
+## Design Focus
+
+- **Intent over role** — sign-up asks what you have or need, not which account type you are.
+- **Rates, limits and demand together** — price, booking window, requests and matches read as one block per listing.
+- **Availability as a timeline** — booked ranges shown with tenant and date inline, making gaps the obvious next action.
+- **Shared listing, two sides** — owner and tenant flows resolve to the same listing and match record.

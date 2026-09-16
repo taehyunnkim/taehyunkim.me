@@ -7,12 +7,13 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     thumbnail: z.string().optional(),
-    tags: z.array(z.enum(['professional', 'personal', 'open-source', 'startup', 'freelance', 'ongoing', 'archived', 'completed'])),
+    tags: z.array(z.enum(['professional', 'personal', 'open-source', 'startup', 'freelance', 'design', 'ongoing', 'archived', 'completed'])),
     skills: z.array(z.string()),
     date: z.string(),
     featured: z.boolean().optional(),
     link: z.string().optional(),
     github: z.string().optional(),
+    figma: z.string().optional(),
   }),
 });
 

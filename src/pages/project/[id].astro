@@ -8,7 +8,7 @@ import TextButton from '@/components/TextButton';
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects'))
-    .filter((p: CollectionEntry<'projects'>) => (p.body ? p.body.trim().length > 0 : false) || !!p.data.link || !!p.data.github);
+    .filter((p: CollectionEntry<'projects'>) => (p.body ? p.body.trim().length > 0 : false) || !!p.data.link || !!p.data.github || !!p.data.figma);
   return projects.map((project: CollectionEntry<'projects'>) => ({
     params: { id: project.id.split('/').pop() || project.id },
     props: { project },
@@ -68,6 +68,13 @@ const thumbnailPath = await resolveThumbnailPath(projectId, project.data.thumbna
                 client:load 
                 text="GitHub Repository" 
                 href={project.data.github}
+              />
+            )}
+            {project.data.figma && (
+              <TextButton 
+                client:load 
+                text="View in Figma" 
+                href={project.data.figma}
               />
             )}
           </div>
@@ -154,6 +161,11 @@ const thumbnailPath = await resolveThumbnailPath(projectId, project.data.thumbna
   .project-tag.academic, .project-tag.ongoing {
     background-color: #fff3e0;
     color: #f57c00;
+  }
+
+  .project-tag.design {
+    background-color: #ede7f6;
+    color: #5e35b1;
   }
 
   .project-tag.open-source {

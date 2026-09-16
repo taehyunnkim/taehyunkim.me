@@ -115,6 +115,11 @@
     color: #f57c00;
 }
 
+.projectTag.design {
+    background-color: #ede7f6;
+    color: #5e35b1;
+}
+
 .projectTag.open-source {
     background-color: #fce4ec;
     color: #c2185b;

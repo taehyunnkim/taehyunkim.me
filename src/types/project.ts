@@ -10,6 +10,7 @@ export interface Project {
     date: string;
     link?: string;
     github?: string;
+    figma?: string;
 }
 
-export type ProjectTag = 'professional' | 'personal' | 'open-source' | 'academic' | 'freelance' | 'startup' | 'ongoing' | 'archived' | 'completed';
+export type ProjectTag = 'professional' | 'personal' | 'open-source' | 'academic' | 'freelance' | 'startup' | 'design' | 'ongoing' | 'archived' | 'completed';

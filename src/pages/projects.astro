@@ -3,10 +3,14 @@ import RootLayout from '@/layouts/RootLayout.astro';
 import PageLayout from '@/layouts/PageLayout.astro';
 import SectionLabel from '@/components/text/SectionLabel';
 import ProjectCard from '@/components/projects/ProjectCard';
-import { getAllProjects, getFeaturedProjects } from '@/content/collection';
+import { getAllProjects, getFeaturedProjects, getDesignProjects } from '@/content/collection';
 
 const allProjects = await getAllProjects();
 const featuredProjects = await getFeaturedProjects();
+const designProjects = await getDesignProjects();
+
+// Design work gets its own section, so keep it out of the general list.
+const engineeringProjects = allProjects.filter((project) => !project.tags.includes('design'));
 ---
 
 <RootLayout title="Projects - TaeHyun Kim">
@@ -27,10 +31,22 @@ const featuredProjects = await getFeaturedProjects();
       </section>
     )}
 
+    {designProjects.length > 0 && (
+      <section class="design-section">
+        <SectionLabel label="Frontend Design" />
+        <p class="section-intro">Product and interface design work, prototyped in Figma.</p>
+        <div class="projects-grid">
+          {designProjects.map((project) => (
+            <ProjectCard project={project} client:load />
+          ))}
+        </div>
+      </section>
+    )}
+
     <section class="all-projects-section">
       <SectionLabel label="All Projects" />
       <div class="projects-grid">
-        {allProjects.map((project) => (
+        {engineeringProjects.map((project) => (
           <ProjectCard project={project} client:load />
         ))}
       </div>
@@ -60,6 +76,18 @@ const featuredProjects = await getFeaturedProjects();
 
   .featured-section {
     margin-bottom: 48px;
+  }
+
+  .design-section {
+    margin-bottom: 48px;
+  }
+
+  .section-intro {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
   }
 
   .all-projects-section {

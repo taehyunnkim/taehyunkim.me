@@ -17,14 +17,20 @@ export async function getAllProjects(): Promise<Project[]> {
       tags: project.data.tags,
       skills: project.data.skills,
       featured: project.data.featured || false,
-      hasContent: (project.body ? project.body.trim().length > 0 : false) || !!project.data.link || !!project.data.github,
+      hasContent: (project.body ? project.body.trim().length > 0 : false) || !!project.data.link || !!project.data.github || !!project.data.figma,
       date: project.data.date,
       link: project.data.link,
-      github: project.data.github
+      github: project.data.github,
+      figma: project.data.figma
     };
   }));
 
   return resolved.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export async function getDesignProjects(): Promise<Project[]> {
+  const projects = await getAllProjects();
+  return projects.filter(project => project.tags.includes('design'));
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {

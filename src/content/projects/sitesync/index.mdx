@@ -1,0 +1,49 @@
+---
+title: "SiteSync"
+description: "An as-built documentation platform that keeps building drawings, versions, and field tasks in one place."
+tags: ["design", "personal", "completed"]
+skills: ["Figma"]
+date: "2023-12-07"
+featured: false
+---
+
+import Screenshot from '@/components/projects/Screenshot.astro';
+import mainPage from './screenshots/main-page.png';
+import buildingsList from './screenshots/buildings-list.png';
+import asbuiltList from './screenshots/asbuilt-list.png';
+import asbuiltView from './screenshots/asbuilt-view.png';
+
+## Overview
+
+SiteSync is a documentation platform for building owners and the contractors working in their buildings. As-built drawings, revisions, and the people responsible for them live on one surface, so a field change and the record of that change never drift apart.
+
+## Dashboard
+
+The landing view answers "what happened while I was away?" — document uploads, collaborator invites and their acceptances, and every task currently assigned across the owner's buildings, each row linking straight to the document it concerns.
+
+<Screenshot src={mainPage} alt="SiteSync dashboard showing recent activities and task activities for a building owner" frame="none" />
+
+## Buildings
+
+Buildings are the top-level unit. Each row carries its address, manager, document count, and collaborator count — enough to judge scale before drilling in. List and grid views, filter, and sort handle portfolios larger than the three shown.
+
+<Screenshot src={buildingsList} alt="My Buildings list with document and collaborator counts per building" frame="none" />
+
+## Document Library
+
+Inside a building, documents are tabled by type, version, and last modified, with the editor's avatar attached to each revision. Tags separate discipline (architectural, electrical, notes) from location (EC Building, BC Building), so the same set filters two ways. Bulk select drives export, access management, and deletion.
+
+<Screenshot src={asbuiltList} alt="Building document library with as-built drawings, version numbers, and discipline tags" frame="none" />
+
+## Document View
+
+The drawing gets the full canvas — zoom, download, print, fullscreen — with version history and sharing one click away. The task panel runs alongside it rather than in a separate tool, so assignments stay attached to the drawing that prompted them.
+
+<Screenshot src={asbuiltView} alt="As-built drawing viewer with zoom controls and a side panel of assigned tasks" frame="none" />
+
+## Design Focus
+
+- **Documents as the spine** — every view (activity, building, task) resolves to a specific document version.
+- **Version legibility** — dated version strings and editor avatars make the revision chain readable at a glance.
+- **Two-axis tagging** — discipline and building-location tags visually distinguished so filters compose.
+- **Tasks in context** — assignment and status live beside the drawing, not in a detached tracker.
