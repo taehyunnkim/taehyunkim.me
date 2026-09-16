@@ -1,8 +1,8 @@
 ---
 title: "Jipgo"
-description: "Coming Early 2026..."
+description: "Actively building a full-stack app..."
 tags: ["personal", "ongoing"]
-skills: ["React Native", "Typescript", "PostgreSQL", "AWS", "Prisma"]
-date: "2025-12-24"
+skills: ["React Native", "Typescript", "Terraform", "Kubernetes", "PostgreSQL", "AWS", "Prisma"]
+date: "2026-09-10"
 featured: false
 ---
