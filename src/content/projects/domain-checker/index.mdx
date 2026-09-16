@@ -1,0 +1,27 @@
+---
+title: "Domain Checker"
+description: "Application to check for malicious domains."
+tags: ["personal", "archived"]
+skills: ["Javascript", "Angular", "Node.js"]
+date: "2023-01-02"
+featured: false
+github: https://github.com/taehyunnkim/domain-checker
+---
+
+import Screenshot from '@/components/projects/Screenshot.astro';
+import safe from './screenshots/safe.png';
+import unsafe from './screenshots/unsafe.png';
+
+## Overview
+
+Domain Safety Checker takes a domain and reports whether it appears in a database of known malicious site.
+
+## Clean Result
+
+<Screenshot src={safe} alt="Domain Safety Checker reporting google.com was not found in the malicious site database" />
+
+## Flagged Result
+
+A match returns red with the suspected malware family named, followed by a description of what that family actually does.
+
+<Screenshot src={unsafe} alt="Domain Safety Checker flagging a domain as unsafe with a GOZI malware description" />
