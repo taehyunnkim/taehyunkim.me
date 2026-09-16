@@ -110,6 +110,10 @@ export const skills: Skills = {
             image: "/skills/django.png"
         },
         {
+            name: "FastAPI",
+            image: "/skills/fastapi.png"
+        },
+        {
             name: "Nginx",
             image: "/skills/nginx.png"
         },
