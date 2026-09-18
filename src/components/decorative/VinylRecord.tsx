@@ -3,15 +3,17 @@ import styles from './VinylRecord.module.css';
 interface VinylRecordProps {
     src: string;
     alt: string;
+    href?: string;
     className?: string;
 }
 
 const VinylRecord: React.FC<VinylRecordProps> = ({ 
     src,
     alt,
+    href,
     className = ''
 }) => {
-    return (
+    const cover = (
         <div className={`${styles.albumCover} ${className}`}>
             <img 
                 src={src}
@@ -21,6 +23,20 @@ const VinylRecord: React.FC<VinylRecordProps> = ({
             />
             <div className={styles.albumHolder}></div>
         </div>
+    );
+
+    if (!href) return cover;
+
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Listen to ${alt}`}
+            className={styles.albumLink}
+        >
+            {cover}
+        </a>
     );
 };
 
