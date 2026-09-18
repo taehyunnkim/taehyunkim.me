@@ -94,10 +94,6 @@ export const skills: Skills = {
             image: "/skills/nodejs.png"
         },
         {
-            name: "Next.js",
-            image: "/skills/nextjs.svg"
-        },
-        {
             name: "Express.js",
             image: "/skills/javascript.png"
         },
@@ -120,10 +116,6 @@ export const skills: Skills = {
         {
             name: "Redis",
             image: "/skills/redis.png"
-        },
-        {
-            name: "MySQL",
-            image: "/skills/mysql.svg"
         },
         {
             name: "MongoDB",
@@ -190,18 +182,6 @@ export const skills: Skills = {
             image: "/skills/prometheus.png"
         },
         {
-            name: "Logstash",
-            image: "/skills/logstash.svg"
-        },
-        {
-            name: "Loki",
-            image: "/skills/loki.png"
-        },
-        {
-            name: "Ansible",
-            image: "/skills/ansible.png"
-        },
-        {
             name: "Puppet",
             image: "/skills/puppet.png"
         },
@@ -254,10 +234,6 @@ export const skills: Skills = {
         {
             name: "AWS",
             image: "/skills/aws.png"
-        },
-        {
-            name: "Azure",
-            image: "/skills/azure.png"
         },
         {
             name: "Oracle",
